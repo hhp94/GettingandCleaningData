@@ -3,8 +3,8 @@ This repo contains all the files submitted for the assignment of the Coursera Co
 
 The submitted files are as follows:
 1) The main script: [run_analysis.R](./run_analysis.R)
-2) The final dataset: [tidy_df.csv](./tidy_df.csv)
-3) The full label list of the dataset: [tidy_df_labels.csv](./tidy_df_labels.csv)
+2) The final dataset: [tidy_df.txt](./tidy_df.txt)
+3) The full label list of the dataset: [tidy_df_labels.txt](./tidy_df_labels.txt)
 4) The Code Book: [CodeBook.md](./CodeBook.md)
 
 II. How the script works:
