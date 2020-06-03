@@ -1,7 +1,6 @@
 I. Introduction:
-The "tidy_df" is a 180*563 tidy data frame that summarizes the mean of the original 561 varia
--bles across two strata: activities ("walking", "walking_upstairs", "walking_downstairs", "sit
-ting","standing" and "laying") and subject IDs (1:30). 
+The "tidy_df" is a 180*563 tidy data frame that summarizes the mean of the original 561 variables across two strata: 1) activities ("walking", "walking_upstairs", "walking_downstairs", "sit
+ting","standing" and "laying") and 2) subject IDs (1:30). 
 
 II. Variables:
 The variables included in this dataset are the original 561 variables of the provided dataset,
