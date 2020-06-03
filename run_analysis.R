@@ -111,4 +111,12 @@ library("data.table")
         head(final_df)
         #Final Results: tidy df (180x561). This is the correct dimension because we have 6 activities * 30 people =180 rows, and 561
         #columns for 561 variables. 
-        
+
+# VI. Write the data to disk
+        #Final data table
+        write_csv(final_df, path = "./tidy_df.csv",append = FALSE,col_names = TRUE)
+        write_delim(final_df, path = "./tidy_df.txt", delim = " ",append = FALSE,col_names = TRUE) 
+        #Label list:
+        tidy_df_labels<-bind_cols(Number = 1:length(names(final_df)), Variables = names(final_df))
+        write_csv(tidy_df_labels, path = "./tidy_df_labels.csv", append = FALSE, col_names = TRUE)
+        write_delim(tidy_df_labels, path = "./tidy_df_labels.txt", delim = " ", append = FALSE, col_names = TRUE)
