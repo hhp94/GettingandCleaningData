@@ -66,28 +66,20 @@ library("data.table")
                         
         # Step 7: convert "activity" and "subjects" to named factors: 
         merged<- merged %>% 
-                mutate(activity_f = factor(activity, levels = act_labels$V1, labels = act_labels$V2)) %>%
-                mutate(subject_f = factor(subject)) 
+                mutate(activity = factor(activity, levels = act_labels$V1, labels = act_labels$V2)) %>%
+                mutate(subject = factor(subject)) 
         
         #At the end of step 7, we have a full dataset from "test" and "train" folder, with subject IDs and named activity IDs
         
 # II. Extracts only the measurements on the mean and standard deviation for each measurements
-        mean_all<- t(merged %>% select(-(subject:subject_f)) %>%
-                          summarize(across(1:561, mean)))
-        sd_all<- t(merged %>% select(-(subject:subject_f)) %>%
-                           summarize(across(1:561, sd)))
-        head(mean_all)
-        tail(mean_all)
-        
-        head(sd_all)
-        tail(sd_all)
+        merged <- merged %>% select(contains(c("mean","std")), activity, subject)
         
 # III. Use descriptive activity names to name the activities in the dataset:
-        #This step has already been performed in first part. The column "activity_f" in data frame "merged" 
+        #This step has already been performed in first part. The column "activity" in data frame "merged" 
         #provides the activity names:
         
-        head(merged$activity_f, n = 10)
-        tail(merged$activity_f, n = 10)
+        head(merged$activity, n = 10)
+        tail(merged$activity, n = 10)
         
 # IV. Appropriately labels the data set with descriptive variable names:
         #The variable names has already been cleaned up in part I, Step 5 with the function janitor::clean_names().
@@ -106,8 +98,8 @@ library("data.table")
         
         #WARNING: THIS CODE WILL TAKE A WHILE TO PERFORM.
         final_df<- merged %>% 
-                group_by(activity_f, subject_f) %>%
-                summarize(across(1:561,mean))                   
+                group_by(activity, subject) %>%
+                summarize(across(1:86,mean))                   
         head(final_df)
         #Final Results: tidy df (180x561). This is the correct dimension because we have 6 activities * 30 people =180 rows, and 561
         #columns for 561 variables. 
