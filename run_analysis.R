@@ -53,6 +53,16 @@ library("data.table")
 
         # Step 5: Apply the label to the merged full dataset
         names(merged) <- labels$V2
+	names(merged)<-gsub("Acc", "Accelerometer", names(merged))
+	names(merged)<-gsub("Gyro", "Gyroscope", names(merged))
+	names(merged)<-gsub("BodyBody", "Body", names(merged))
+	names(merged)<-gsub("Mag", "Magnitude", names(merged))
+	names(merged)<-gsub("^t", "Time", names(merged))
+	names(merged)<-gsub("^f", "Frequency", names(merged))
+	names(merged)<-gsub("tBody", "TimeBody", names(merged))
+	names(merged)<-gsub("-freq()", "Frequency", names(merged), ignore.case = TRUE)
+	names(merged)<-gsub("angle", "Angle", names(merged))
+	names(merged)<-gsub("gravity", "Gravity", names(merged))
         merged<-clean_names(merged)                                             #clean_names: converted all names to lower case,
                                                                                 #converted special characters into "_", and assigned numbers
                                                                                 #if there are duplicated names
@@ -91,7 +101,7 @@ library("data.table")
         tail(names(merged),n =50)
         
         #This tests if the names of the variables are unique:
-        length(unique(names(merged))) # equals to 565 which is the number of variables in our dataset 
+        length(unique(names(merged))) # equals to 88 which is the number of variables in our dataset 
         
 # V. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity,
 # and each subject. 

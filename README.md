@@ -20,5 +20,5 @@ Step 8: Create a new column in the merged dataset called "activity" by transform
 the "activity" column transformed into factors, with the levels and labels assigned according to the imported list.  
 Step 9: Create a new column in the merged dataset called "subject" by transforming  
 the "subject" column into factors  
-Step 10: Select only the variables with "mean" and "std" in the name
+Step 10: Select only the variables with "mean" and "std" in the name. THE "ANGLE" means/std were not removed
 Step 11: Construct the tidy_df by using dplyr functions: summarize() and accross()  
